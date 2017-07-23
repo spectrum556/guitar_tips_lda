@@ -1,5 +1,4 @@
-import os
-from os.path import join
+from helpers import *
 
 
 LDA_PARAMS = {'num_topics': 17,
@@ -7,12 +6,6 @@ LDA_PARAMS = {'num_topics': 17,
               'alpha': 0.001}
 
 
-def get_path(dir_name, filename) -> str:
-    current_path = os.path.dirname(__file__)
-    return join(current_path, dir_name, filename)
-
-
-PROJECT_PATH = os.path.dirname(__file__)
 DIR_NAME = 'tmp'
 VIS_DIR_NAME = 'results'
 RESOURCES = 'resources'
