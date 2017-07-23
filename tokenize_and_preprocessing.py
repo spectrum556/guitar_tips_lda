@@ -9,7 +9,6 @@ from nltk.tokenize import RegexpTokenizer
 from pymystem3 import Mystem
 
 from constants import *
-from read_json import ReadJson
 
 
 class ElementsForLDA:
@@ -98,11 +97,3 @@ class Preprocessor:
     def get_stopwords_from_file(filename) -> list:
         with open(filename) as file:
             return [word.replace('\n', '').lower() for word in file]
-
-
-if __name__ == '__main__':
-    rj = ReadJson(SONGS_FILENAME, MIN_VIEWS)
-    preprocessor = Preprocessor(rj.get_lyrics())
-    preprocessor.run()
-    corp_and_dict = ElementsForLDA(preprocessor.documents)
-    corp_and_dict.save_to_file()

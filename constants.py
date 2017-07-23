@@ -22,5 +22,5 @@ UKRAINIAN_STOPWORDS_FILENAME = get_path(RESOURCES, 'ukrainian-stopwords.txt')
 CHORDS_FILENAME = get_path(RESOURCES, 'all_chords.txt')
 USER_WORDS_FILENAME = get_path(RESOURCES, 'user_stopwords.txt')
 
-MIN_VIEWS = 25000
+MIN_VIEWS = 7000
 LANGUAGE = 'ru'

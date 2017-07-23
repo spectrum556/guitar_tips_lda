@@ -1,28 +1,33 @@
 import json
-from pprint import pprint
-from constants import *
 
 
 class ReadJson:
     def __init__(self, songs_file_path, min_views):
         self.songs_file_path = songs_file_path
         self.min_views = min_views
+        self.song_texts = []
 
-    def get_lyrics(self) -> list:
+    def get_song_texts(self) -> list:
+        return self.song_texts
+
+    def get_songs_count(self):
+        return len(self.song_texts)
+
+    def read_song_texts(self) -> list:
         artists = []
         with open(self.songs_file_path) as file:
             for line in file:
                 artist = json.loads(line)
-                self.filter_popular(artist)
+                self._filter_popular(artist)
                 artists.append(artist)
-        self.filter_different(artists)
-        texts = []
+        self._filter_different(artists)
+        self.song_texts = []
         for artist in artists:
             for song in artist['songs']:
-                texts.append(song['text'])
-        return texts
+                self.song_texts.append(song['text'])
+        return self.song_texts
 
-    def filter_popular(self, artist):
+    def _filter_popular(self, artist):
         """
         Mutates artist
         """
@@ -34,7 +39,7 @@ class ReadJson:
         return artist
 
     @staticmethod
-    def filter_different(artists):
+    def _filter_different(artists):
         """
         Mutates artists
         """
@@ -49,7 +54,3 @@ class ReadJson:
                     artist_songs.add(song['name'])
             artist['songs'] = songs
         return artists
-
-if __name__ == '__main__':
-    rj = ReadJson(SONGS_FILENAME, MIN_VIEWS)
-    pprint(len(rj.get_lyrics()))
