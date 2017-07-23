@@ -1,19 +1,15 @@
-from gensim import corpora
 import re
-from pprint import pprint  # pretty-printer
 from collections import defaultdict
-from nltk.tokenize import RegexpTokenizer
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
+from pprint import pprint  # pretty-printer
+
 import langid
-from read_json import get_lyrics, get_path
-from langdetect import detect
+from gensim import corpora
+from nltk.corpus import stopwords
+from nltk.tokenize import RegexpTokenizer
 from pymystem3 import Mystem
+
 from constants import *
-
-
-
-LANGUAGE = 'ru'
+from read_json import ReadJson
 
 
 class ElementsForLDA:
@@ -100,23 +96,13 @@ class Preprocessor:
 
     @staticmethod
     def get_stopwords_from_file(filename) -> list:
-        with open(get_path(filename)) as file:
+        with open(filename) as file:
             return [word.replace('\n', '').lower() for word in file]
 
 
-# todo fix method
-def remove_hightfrequency_lyrics(songs, amount=2):
-    frequency = defaultdict(int)
-    # count all token
-    for song in songs:
-        frequency[song] += 1
-    pprint(frequency)
-    # keep words that occur more than once
-    return [song for song in songs if frequency[song] < amount]
-
-
 if __name__ == '__main__':
-    preprocessor = Preprocessor(get_lyrics())
+    rj = ReadJson(SONGS_FILENAME, MIN_VIEWS)
+    preprocessor = Preprocessor(rj.get_lyrics())
     preprocessor.run()
     corp_and_dict = ElementsForLDA(preprocessor.documents)
     corp_and_dict.save_to_file()
