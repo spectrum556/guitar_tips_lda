@@ -31,10 +31,13 @@ class Similar:
         # perform a similarity query against the corpus
         sims = self.index[vec_lda]
         sort_sims = sorted(enumerate(sims), key=lambda item: -item[1])
-        return self._apply_threshold(sort_sims, probability_threshold)
+        return self._apply_threshold(sort_sims, probability_threshold, number_in_dict)
 
-    def _apply_threshold(self, sims, threshold):
-        return list(filter(lambda item: item[1] >= threshold, sims))
+    def _apply_threshold(self, sims, threshold, number_in_dict):
+        return [item for item in sims
+                    if item[1] >= threshold and
+                       item[0] != number_in_dict]
+        # return list(filter(lambda item: item[1] >= threshold, sims))
 
 
 if __name__ == '__main__':
