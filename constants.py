@@ -14,6 +14,7 @@ RESOURCES = 'resources'
 CORPUS_FILENAME = get_path(DIR_NAME, 'songs.mm')
 DICT_FILENAME = get_path(DIR_NAME, 'songs.dict')
 LDA_FILENAME = get_path(DIR_NAME, 'songs.lda')
+INDEX_FILENAME = get_path(DIR_NAME, 'sims.index')
 
 VIS_FILENAME = get_path(VIS_DIR_NAME, 'LDAvis {}.html'.format(LDA_PARAMS))
 
@@ -24,3 +25,4 @@ USER_WORDS_FILENAME = get_path(RESOURCES, 'user_stopwords.txt')
 
 MIN_VIEWS = 7000
 LANGUAGE = 'ru'
+
