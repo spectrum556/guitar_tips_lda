@@ -26,3 +26,6 @@ USER_WORDS_FILENAME = get_path(RESOURCES, 'user_stopwords.txt')
 MIN_VIEWS = 7000
 LANGUAGE = 'ru'
 
+STANDART_SIMILAR_AMOUNT = 50
+
+

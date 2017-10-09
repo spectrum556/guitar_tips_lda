@@ -2,3 +2,8 @@
 /__pycache__/
 /tmp/
 /resources/songs.json
+guitar_tips
+*.pyc
+.DS_Store
+guitar_tips.sql
+guitar_tips.sql.zip

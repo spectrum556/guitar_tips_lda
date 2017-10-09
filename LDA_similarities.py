@@ -4,8 +4,6 @@ import json
 import time
 from pprint import pprint
 
-STANDART_SIMILAR_AMOUNT = 50
-
 
 class Similar:
     def __init__(self, id, similar_amount=STANDART_SIMILAR_AMOUNT, probability_threshold=0.0):
@@ -30,6 +28,7 @@ class Similar:
         index = similarities.MatrixSimilarity(self.lda[self.corpus])
         index.save(INDEX_FILENAME)
         return index
+
     def _make_doc_ids(self):
         """
         :return list of tuples (id of doc, similarity probability) for docs with
@@ -65,9 +64,9 @@ class Similar:
         return [
             {
                 'song_id': item[0],
-                'similar_degree': float(item[1])
+                'similar_degree': round(float(item[1]), 3)
             }
-            for item in self.get_doc_ids()]
+            for item in self.doc_ids]
 
     def get_json(self):
         return json.dumps(self.get_dict_list())
