@@ -17,7 +17,7 @@ Jinja2==2.9.6
 joblib==0.11
 langdetect==1.0.7
 langid==1.1.6
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 nltk==3.2.4
 numexpr==2.6.2
