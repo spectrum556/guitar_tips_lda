@@ -14,7 +14,7 @@ idna==2.5
 ijson==2.3
 itsdangerous==0.24
 Jinja2==2.9.6
-joblib==0.11
+joblib==1.2.0
 langdetect==1.0.7
 langid==1.1.6
 Mako==1.0.7
